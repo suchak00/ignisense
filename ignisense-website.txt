@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IGNISENSE | Natural Disaster Monitoring</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>🔥 IGNISENSE</h1>
+    <p>Natural Disaster & Fire Monitoring System (IoT)</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#sensors">Sensors</a>
+    <a href="#dashboard">Live Dashboard</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="about">
+    <h2>About IGNISENSE</h2>
+    <p>
+      IGNISENSE is an IoT-based natural disaster monitoring system designed to
+      detect fire risks using environmental sensors such as temperature,
+      humidity, soil moisture, and smoke sensors.  
+      The data is collected using ESP8266 NodeMCU and sent to the cloud
+      using ThingSpeak for real-time monitoring.
+    </p>
+  </section>
+
+  <section id="sensors">
+    <h2>Sensors Used</h2>
+    <ul>
+      <li>🌡 Temperature Sensor (DHT11)</li>
+      <li>💧 Humidity Sensor (DHT11)</li>
+      <li>🌱 Soil Moisture Sensor</li>
+      <li>🔥 Smoke / Gas Sensor (MQ Series)</li>
+    </ul>
+  </section>
+
+  <section id="dashboard">
+    <h2>Live Sensor Dashboard</h2>
+    <p>Real-time data from ThingSpeak</p>
+
+    <div class="charts">
+      <div class="chart">
+        <h3>Temperature (°C)</h3>
+        <iframe 
+          src="https://thingspeak.com/channels/YOUR_CHANNEL_ID/charts/1?dynamic=true&results=60">
+        </iframe>
+      </div>
+
+      <div class="chart">
+        <h3>Humidity (%)</h3>
+        <iframe 
+          src="https://thingspeak.com/channels/YOUR_CHANNEL_ID/charts/2?dynamic=true&results=60">
+        </iframe>
+      </div>
+
+      <div class="chart">
+        <h3>Soil Moisture</h3>
+        <iframe 
+          src="https://thingspeak.com/channels/YOUR_CHANNEL_ID/charts/3?dynamic=true&results=60">
+        </iframe>
+      </div>
+
+      <div class="chart">
+        <h3>Smoke Detection</h3>
+        <iframe 
+          src="https://thingspeak.com/channels/YOUR_CHANNEL_ID/charts/4?dynamic=true&results=60">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Project Info</h2>
+    <p>
+      Developed by: <strong>Your Name</strong><br>
+      Platform: ESP8266 + ThingSpeak<br>
+      Application: Fire & Natural Disaster Monitoring
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2026 IGNISENSE | Natural Disaster Management</p>
+  </footer>
+
+</body>
+</html>
