@@ -1,37 +1,76 @@
-/* ===== GLOBAL ===== */
-body {
+/* ===== GLOBAL RESET ===== */
+* {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Arial, sans-serif;
-  background: radial-gradient(circle at top, #0f2027, #000);
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+/* ===== BODY BACKGROUND (ROBOTICS THEME) ===== */
+body {
+  background:
+    linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)),
+    url("https://images.unsplash.com/photo-1581091870622-1e7e39c18d2b");
+  background-size: cover;
+  background-attachment: fixed;
   color: #e0e0e0;
+}
+
+/* ===== RED ALERT BANNER ===== */
+.alert {
+  display: none;
+  background: linear-gradient(90deg, #ff0000, #ff6a00);
+  color: #fff;
+  text-align: center;
+  padding: 14px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  animation: blink 1s infinite;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 0 20px red;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.4; }
+  100% { opacity: 1; }
 }
 
 /* ===== HEADER ===== */
 header {
-  background: linear-gradient(90deg, #8b0000, #ff0000);
-  color: white;
-  padding: 25px;
   text-align: center;
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+  padding: 50px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  border-bottom: 2px solid #ff6a00;
 }
 
 header h1 {
-  font-size: 2.8rem;
-  letter-spacing: 2px;
-  text-shadow: 0 0 15px red;
+  font-size: 3rem;
+  color: #ff6a00;
+  text-shadow: 0 0 15px #ff6a00;
 }
 
-/* ===== NAV ===== */
+header p {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  color: #cfcfcf;
+}
+
+/* ===== NAVIGATION ===== */
 nav {
-  background: rgba(10, 10, 10, 0.9);
-  text-align: center;
-  padding: 12px;
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 15px;
+  background: rgba(20, 20, 20, 0.9);
   border-bottom: 1px solid #333;
 }
 
 nav a {
-  color: #ff4d4d;
-  margin: 0 18px;
+  color: #ff6a00;
   text-decoration: none;
   font-weight: bold;
   transition: 0.3s;
@@ -39,69 +78,69 @@ nav a {
 
 nav a:hover {
   color: #fff;
-  text-shadow: 0 0 10px red;
+  text-shadow: 0 0 10px #ff6a00;
 }
 
 /* ===== SECTIONS ===== */
 section {
-  padding: 40px;
   max-width: 1100px;
   margin: 50px auto;
-  background: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  background: rgba(0, 0, 0, 0.65);
   border-radius: 12px;
-  box-shadow: 0 0 25px rgba(255, 0, 0, 0.15);
+  box-shadow: 0 0 20px rgba(255, 106, 0, 0.2);
 }
 
-/* ===== HEADINGS ===== */
-h2 {
-  color: #ff4d4d;
-  border-left: 5px solid #ff0000;
-  padding-left: 12px;
+section h2 {
+  margin-bottom: 20px;
+  color: #ff6a00;
+  border-left: 5px solid #ff6a00;
+  padding-left: 10px;
+}
+
+section p {
+  line-height: 1.7;
+  font-size: 1.05rem;
 }
 
 /* ===== SENSOR LIST ===== */
 ul {
   list-style: none;
-  padding: 0;
 }
 
 ul li {
-  background: rgba(255, 0, 0, 0.08);
-  padding: 12px;
+  padding: 10px;
   margin: 10px 0;
-  border-left: 5px solid #ff0000;
-  box-shadow: inset 0 0 10px rgba(255, 0, 0, 0.2);
+  background: rgba(255, 106, 0, 0.1);
+  border-left: 4px solid #ff6a00;
 }
 
 /* ===== DASHBOARD ===== */
 .charts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 25px;
 }
 
 .chart {
-  background: rgba(15, 15, 15, 0.9);
+  background: rgba(10, 10, 10, 0.8);
   padding: 15px;
   border-radius: 10px;
   border: 1px solid #333;
-  box-shadow: 0 0 20px rgba(255, 0, 0, 0.15);
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s;
 }
 
 .chart:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 30px red;
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #ff6a00;
 }
 
-/* ===== CHART TITLE ===== */
 .chart h3 {
   text-align: center;
-  color: #ff4d4d;
   margin-bottom: 10px;
+  color: #ff6a00;
 }
 
-/* ===== IFRAME ===== */
 iframe {
   width: 100%;
   height: 260px;
@@ -112,22 +151,25 @@ iframe {
 
 /* ===== FOOTER ===== */
 footer {
-  background: rgba(0, 0, 0, 0.9);
-  color: #aaa;
   text-align: center;
-  padding: 18px;
-  border-top: 2px solid red;
-  box-shadow: 0 0 15px rgba(255, 0, 0, 0.3);
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.9);
+  border-top: 2px solid #ff6a00;
+  margin-top: 50px;
+}
+
+footer p {
+  font-size: 0.9rem;
+  color: #aaa;
 }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
   header h1 {
-    font-size: 2.1rem;
+    font-size: 2.2rem;
   }
 
-  nav a {
-    display: inline-block;
-    margin: 10px;
+  nav {
+    flex-direction: column;
   }
 }
