@@ -7,86 +7,120 @@
 </head>
 <body>
 
-  <header>
-    <h1>🔥 IGNISENSE</h1>
-    <p>Natural Disaster & Fire Monitoring System (IoT)</p>
-  </header>
+<!-- 🚨 RED ALERT BANNER -->
+<div id="alertBanner" class="alert">
+  🔥 FIRE DETECTED! EMERGENCY RESPONSE ACTIVATED
+</div>
 
-  <nav>
-    <a href="#about">About</a>
-    <a href="#sensors">Sensors</a>
-    <a href="#dashboard">Live Dashboard</a>
-    <a href="#contact">Contact</a>
-  </nav>
+<header>
+  <h1>🔥 IGNISENSE</h1>
+  <p>AI-Powered Fire & Natural Disaster Monitoring System (IoT)</p>
+</header>
 
-  <section id="about">
-    <h2>About IGNISENSE</h2>
-    <p>
-      IGNISENSE is an IoT-based natural disaster monitoring system designed to
-      detect fire risks using environmental sensors such as temperature,
-      humidity, soil moisture, and smoke sensors.  
-      The data is collected using ESP8266 NodeMCU and sent to the cloud
-      using ThingSpeak for real-time monitoring.
-    </p>
-  </section>
+<nav>
+  <a href="#about">About</a>
+  <a href="#sensors">Sensors</a>
+  <a href="#dashboard">Live Dashboard</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <section id="sensors">
-    <h2>Sensors Used</h2>
-    <ul>
-      <li>🌡 Temperature Sensor (DHT11)</li>
-      <li>💧 Humidity Sensor (DHT11)</li>
-      <li>🌱 Soil Moisture Sensor</li>
-      <li>🔥 Smoke / Gas Sensor (MQ Series)</li>
-    </ul>
-  </section>
+<section id="about">
+  <h2>About IGNISENSE</h2>
+  <p>
+    IGNISENSE is an advanced IoT-based natural disaster monitoring system
+    designed to detect fire hazards and environmental risks using real-time
+    sensor data. The system integrates temperature, humidity, soil moisture,
+    and flame sensors to provide early warning alerts.
+  </p>
+  <p>
+    Data is collected using <strong>ESP32</strong> and transmitted to the cloud
+    via <strong>ThingSpeak</strong> for live monitoring and analysis.
+  </p>
+</section>
 
-  <section id="dashboard">
-    <h2>Live Sensor Dashboard</h2>
-    <p>Real-time data from ThingSpeak</p>
+<section id="sensors">
+  <h2>Sensors Used</h2>
+  <ul>
+    <li>🌡 Temperature & Humidity Sensor (DHT22)</li>
+    <li>🌱 Soil Moisture Sensor</li>
+    <li>🔥 Flame Sensor Module</li>
+    <li>📡 SIM900A GSM Module (Emergency Call Alert)</li>
+  </ul>
+</section>
 
-    <div class="charts">
-      <div class="chart">
-        <h3>Temperature (°C)</h3>
-        <iframe 
-          src="https://thingspeak.com/channels/3245528/charts/1?dynamic=true&results=60">
-        </iframe>
-      </div>
+<section id="dashboard">
+  <h2>Live Sensor Dashboard</h2>
+  <p>Real-time data visualization from ThingSpeak cloud</p>
 
-      <div class="chart">
-        <h3>Humidity (%)</h3>
-        <iframe 
-          src="https://thingspeak.com/channels/3245528/charts/2?dynamic=true&results=60">
-        </iframe>
-      </div>
+  <div class="charts">
 
-      <div class="chart">
-        <h3>Soil Moisture</h3>
-        <iframe 
-          src="https://thingspeak.com/channels/3245528/charts/3?dynamic=true&results=60">
-        </iframe>
-      </div>
-
-      <div class="chart">
-        <h3>Smoke Detection</h3>
-        <iframe 
-          src="https://thingspeak.com/channels/3245528/charts/4?dynamic=true&results=60">
-        </iframe>
-      </div>
+    <div class="chart">
+      <h3>🌡 Temperature (°C)</h3>
+      <iframe 
+        src="https://thingspeak.com/channels/3245528/charts/1?dynamic=true&results=60">
+      </iframe>
     </div>
-  </section>
 
-  <section id="contact">
-    <h2>Project Info</h2>
-    <p>
-      Developed by: <strong>Suchak Tiwari</strong><br>
-      Platform: ESP8266 + ThingSpeak<br>
-      Application: Fire & Natural Disaster Monitoring
-    </p>
-  </section>
+    <div class="chart">
+      <h3>💧 Humidity (%)</h3>
+      <iframe 
+        src="https://thingspeak.com/channels/3245528/charts/2?dynamic=true&results=60">
+      </iframe>
+    </div>
 
-  <footer>
-    <p>© 2026 IGNISENSE | Natural Disaster Management</p>
-  </footer>
+    <div class="chart">
+      <h3>🌱 Soil Moisture</h3>
+      <iframe 
+        src="https://thingspeak.com/channels/3245528/charts/3?dynamic=true&results=60">
+      </iframe>
+    </div>
+
+    <div class="chart">
+      <h3>🔥 Flame Detection</h3>
+      <iframe 
+        src="https://thingspeak.com/channels/3245528/charts/4?dynamic=true&results=60">
+      </iframe>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Project Information</h2>
+  <p>
+    Developed by: <strong>Suchak Tiwari</strong><br>
+    Hardware: ESP32 + DHT22 + Flame Sensor + SIM900A<br>
+    Cloud Platform: ThingSpeak<br>
+    Application: Fire Detection & Disaster Risk Management
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 IGNISENSE | Smart Disaster Monitoring System</p>
+</footer>
+
+<!-- 🔥 FLAME ALERT SCRIPT -->
+<script>
+const channelID = "3245528";
+const flameField = 4;
+
+async function checkFire() {
+  const res = await fetch(
+    `https://api.thingspeak.com/channels/${channelID}/fields/${flameField}/last.json`
+  );
+  const data = await res.json();
+  const alertBanner = document.getElementById("alertBanner");
+
+  if (data.field4 == "0") {
+    alertBanner.style.display = "block";
+  } else {
+    alertBanner.style.display = "none";
+  }
+}
+
+setInterval(checkFire, 5000);
+checkFire();
+</script>
 
 </body>
 </html>
