@@ -41,6 +41,15 @@ section {
   background: rgba(0,0,0,0.55);
   border-radius: 12px;
   box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+section:hover {
+  transform: translateY(-8px) scale(1.01);
+  background: rgba(0, 0, 0, 0.65);
+  box-shadow: 0 0 35px rgba(255, 77, 77, 0.5);
+}
+section:hover h2 {
+  text-shadow: 0 0 12px rgba(255, 77, 77, 0.9);
 }
 
 h2 {
@@ -118,3 +127,4 @@ footer {
   background: #000;
   border-top: 2px solid #ff4d4d;
 }
+
